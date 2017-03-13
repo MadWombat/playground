@@ -1,3 +1,6 @@
+import pygame
+
+
 class World:
     def __init__(self, width, height, features=[]):
         self.width = width
@@ -24,3 +27,10 @@ class World:
 
     def remove(self, agent):
         self.agents.remove(agent)
+
+    def render(self, screen):
+        background = pygame.Surface(screen.get_size())
+        background.fill([0, 20, 0])
+        screen.blit(background, (0, 0))
+        for agent in self.agents:
+            agent.render(screen)

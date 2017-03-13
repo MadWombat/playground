@@ -1,11 +1,9 @@
-from kivy.config import Config
+import pygame
 
 from world import World
 from agent import Agent
 
 from minds import PassiveMind
-
-from render.app import RenderApp
 
 
 if __name__ == '__main__':
@@ -15,8 +13,22 @@ if __name__ == '__main__':
     agent = Agent(mind)
     world.add(agent)
 
-    # do the kivy thing
-    Config.set('kivy', 'desktop', 1)
-    Config.set('kivy', 'exit_on_escape', 1)
-    Config.set('graphics', 'resizable', 0)
-    RenderApp(world).run()
+    pygame.init()
+    pygame.display.set_caption('Playground')
+    clock = pygame.time.Clock()
+    screen = pygame.display.set_mode((world.width, world.height), pygame.HWSURFACE, 32)
+    world.render(screen)
+    pygame.display.update()
+
+    running = True
+
+    while running:
+        clock.tick(60)
+        world.update()
+        world.render(screen)
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+    pygame.quit()

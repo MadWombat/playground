@@ -1,9 +1,9 @@
 class Agent(object):
-    def __init__(self, mind, traits=[]):
+    def __init__(self, mind, traits=None):
         self.pos = (0, 0)
         self.world = None
         self._actions = {}
-        self.traits = traits
+        self.traits = traits and traits or []
         self.alive = True
         self.mind = mind
         for trait in self.traits:
