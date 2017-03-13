@@ -11,5 +11,5 @@ class RenderApp(App):
 
     def build(self):
         widget = WorldWidget(world=self.world)
-        Clock.schedule_interval(widget.update, 1.0/60.0)
+        Clock.schedule_interval(widget.update, 1.0 / 60.0)
         return widget

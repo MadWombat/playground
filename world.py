@@ -19,7 +19,7 @@ class World:
         if pos:
             agent.pos = pos
         else:
-            agent.pos = (self.width//2, self.height//2) # center agent by default
+            agent.pos = (self.width // 2, self.height // 2) # center agent by default
         self.agents.append(agent)
 
     def remove(self, agent):
